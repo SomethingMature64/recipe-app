@@ -16,7 +16,7 @@ app.use(express.json())
 
 app.get("/api/health", (req,res)=>{
     res.status(200).json({success:true});
-
+    console.log("Yup, still healthy")
 });
 
 app.listen(PORT,() => {
