@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const AboutScreen = () => {
+const IndexPage = () => {
   return (
     <View>
-      <Text>AboutScreen</Text>
+      <Text>index</Text>
     </View>
   )
 }
 
-export default AboutScreen
+export default IndexPage;
