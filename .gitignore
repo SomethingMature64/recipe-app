@@ -16,3 +16,4 @@ mobile/assets/images/i3.png
 mobile/assets/images/pork.png
 mobile/assets/images/lamb.png
 .gitignore
+mobile/.env

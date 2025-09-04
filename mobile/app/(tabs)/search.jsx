@@ -1,12 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const IndexPage = () => {
+export default function search() {
   return (
     <View>
-      <Text>index</Text>
+      <Text>search</Text>
     </View>
   )
 }
-
-export default IndexPage;
