@@ -6,9 +6,9 @@ import { homeStyles } from "../../assets/styles/home.styles";
 import { Image } from "expo-image";
 import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
-// import CategoryFilter from "../../components/CategoryFilter";
-// import RecipeCard from "../../components/RecipeCard";
-// import LoadingSpinner from "../../components/LoadingSpinner";
+import CategoryFilter from "../../components/CategoryFilter";
+import RecipeCard from "../../components/RecipeCard";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 // const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -86,8 +86,7 @@ const HomeScreen = () => {
     loadData();
   }, []);
 
-  if (loading && !refreshing) return <><Text>Loading</Text></>
-//   <LoadingSpinner message="Loading delicions recipes..." />;
+  if (loading && !refreshing) return <LoadingSpinner message="Loading delicious recipes..." />;
 
   return (
     <View style={homeStyles.container}>
@@ -175,38 +174,38 @@ const HomeScreen = () => {
           </View>
         )}
 
-        {/* {categories.length > 0 && (
+        {categories.length > 0 && (
           <CategoryFilter
             categories={categories}
             selectedCategory={selectedCategory}
             onSelectCategory={handleCategorySelect}
           />
-        )} */}
+        )} 
 
-        {/* <View style={homeStyles.recipesSection}>
+        <View style={homeStyles.recipesSection}>
           <View style={homeStyles.sectionHeader}>
             <Text style={homeStyles.sectionTitle}>{selectedCategory}</Text>
           </View>
 
-          {recipes.length > 0 ? (
+          {recipes.length > 0 ? ( //If recipes.length is greater than 0 render the recipe card else render no recipe found
             <FlatList
               data={recipes}
               renderItem={({ item }) => <RecipeCard recipe={item} />}
               keyExtractor={(item) => item.id.toString()}
-              numColumns={2}
+              numColumns={2} //?Can't have more than 2 rows
               columnWrapperStyle={homeStyles.row}
               contentContainerStyle={homeStyles.recipesGrid}
               scrollEnabled={false}
             // ListEmptyComponent={}
             />
-          ) : (
+          ) : ( 
             <View style={homeStyles.emptyState}>
               <Ionicons name="restaurant-outline" size={64} color={COLORS.textLight} />
               <Text style={homeStyles.emptyTitle}>No recipes found</Text>
               <Text style={homeStyles.emptyDescription}>Try a different category</Text>
             </View>
           )}
-        </View> */}
+        </View>
       </ScrollView>
     </View>
   );
