@@ -5,9 +5,9 @@ import {favoritesStyles} from '../../assets/styles/favorites.styles';
 import {COLORS} from '../../constants/colors'
 import {Ionicons} from '@expo/vector-icons'
 import RecipeCard from '../../components/RecipeCard'
-//import NoFavoritesFound from "../../components/NoFavoritesFound"
 import LoadingSpinner from '../../components/LoadingSpinner'
 import { useState, useEffect } from "react";
+import NoFavoritesFound from "../../components/NoFavoritesFound";
 
 const FavoriteScreen = () => {
     const {signOut} = useClerk();
@@ -71,7 +71,7 @@ const FavoriteScreen = () => {
                         numColumns={2}
                         columnWrapperStyle={favoritesStyles.recipesGrid}
                         scrollEnabled={false}
-                        //ListEmptyComponent={}
+                        ListEmptyComponent={<NoFavoritesFound/>}
                     />
                 </View>
             </ScrollView>
