@@ -5,6 +5,7 @@ import {COLORS} from '../constants/colors'
 import {favoritesStyles} from '../assets/styles/favorites.styles'
 
 const NoFavoritesFound = () => {
+    const router = useRouter();
     return(
         <View style={favoritesStyles.emptyState}>
             <View style={favoritesStyles.emptyIconContainer}>
