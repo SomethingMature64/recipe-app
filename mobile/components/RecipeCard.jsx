@@ -12,7 +12,7 @@ export default function RecipeCard({recipe})
     return(
         <TouchableOpacity
         style={recipeCardStyles.container}
-        //onPress={()=>router.push(`/recipe/${recipe.id}`)} //Dynamic routing
+        onPress={()=>router.push(`/recipe/${recipe.id}`)} //Dynamic routing
         activateOpacity={0.8}
         >
             <View style={recipeCardStyles.imageContainer}>
