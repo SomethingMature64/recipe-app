@@ -7,6 +7,7 @@ import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import RecipeCard from "../../components/RecipeCard";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import ScreenHeader from '../../components/ScreenHeader'
 
 const SearchScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -75,10 +76,21 @@ const SearchScreen = () => {
     handleSearch();
   }, [debouncedSearchQuery, initialLoading]);
 
-  if (initialLoading) return <LoadingSpinner message="Loading recipes..." />;
-
+  if (initialLoading) return <View style={searchStyles.container}>
+      <ScreenHeader
+        title={"Search"}
+        hidelogout
+      />
+      <LoadingSpinner message="Loading recipes..." />;
+    </View>
   return (
     <View style={searchStyles.container}>
+      <ScreenHeader
+        title={"Search"}
+        hidelogout
+      />
+
+      {/*SEARCH BAR*/}
       <View style={searchStyles.searchSection}>
         <View style={searchStyles.searchContainer}>
           <Ionicons
@@ -102,7 +114,8 @@ const SearchScreen = () => {
           )}
         </View>
       </View>
-
+        
+      {/*POPULAR RECIPES AND FOUND RECIPES BAR*/}
       <View style={searchStyles.resultsSection}>
         <View style={searchStyles.resultsHeader}>
           <Text style={searchStyles.resultsTitle}>
@@ -111,6 +124,7 @@ const SearchScreen = () => {
           <Text style={searchStyles.resultsCount}>{recipes.length} found</Text>
         </View>
 
+        {/* RECIPES LOADED */}
         {loading ? (
           <View style={searchStyles.loadingContainer}>
             <LoadingSpinner message="Searching recipes..." size="small" />
