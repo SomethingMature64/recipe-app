@@ -15,6 +15,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { authStyles } from "../../assets/styles/auth.styles";
 import { COLORS } from "../../constants/colors";
+import AuthInput from '../../components/AuthInput'
+import AuthButton from '../../components/AuthButton'
 
 const SignInScreen = () => {
   const router = useRouter();
@@ -79,49 +81,30 @@ const SignInScreen = () => {
           {/* FORM CONTAINER */}
           <View style={authStyles.formContainer}>
             {/* Email Input */}
-            <View style={authStyles.inputContainer}>
-              <TextInput
-                style={authStyles.textInput}
-                placeholder="Enter email"
-                placeholderTextColor={COLORS.textLight}
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-              />
-            </View>
+            <AuthInput
+            Placeholder="Enter email"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+
+            />
 
             {/* PASSWORD INPUT */}
-            <View style={authStyles.inputContainer}>
-              <TextInput
-                style={authStyles.textInput}
-                placeholder="Enter password"
-                placeholderTextColor={COLORS.textLight}
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry={!showPassword}
-                autoCapitalize="none"
-              />
-              <TouchableOpacity
-                style={authStyles.eyeButton}
-                onPress={() => setShowPassword(!showPassword)}
-              >
-                <Ionicons
-                  name={showPassword ? "eye-outline" : "eye-off-outline"}
-                  size={20}
-                  color={COLORS.textLight}
-                />
-              </TouchableOpacity>
-            </View>
+            <AuthInput 
+            Placeholder="Enter password"
+            value={password}
+            onChangeText={setPassword}
+            secure
+            />
 
-            <TouchableOpacity
-              style={[authStyles.authButton, loading && authStyles.buttonDisabled]}
-              onPress={handleSignIn}
-              disabled={loading}
-              activeOpacity={0.8}
-            >
-              <Text style={authStyles.buttonText}>{loading ? "Signing In..." : "Sign In"}</Text>
-            </TouchableOpacity>
+            {/* SIGN IN BUTTON*/}
+            <AuthButton
+            onPress={handleSignIn}
+            loading={loading}
+            title1={"Signing In"}
+            title2={"Sign In"}
+            />
+            
 
             {/* Sign Up Link */}
             <TouchableOpacity

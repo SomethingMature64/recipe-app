@@ -13,7 +13,9 @@ import { useSignUp } from "@clerk/clerk-expo";
 import { useState } from "react";
 import { authStyles } from "../../assets/styles/auth.styles";
 import { Image } from "expo-image";
-import { COLORS } from "../../constants/colors";
+// import { COLORS } from "../../constants/colors";
+import AuthInput from '../../components/AuthInput'
+import AuthButton from '../../components/AuthButton'
 
 import { Ionicons } from "@expo/vector-icons";
 import VerifyEmail from "./verify-email";
@@ -75,52 +77,28 @@ const SignUpScreen = () => {
 
           <View style={authStyles.formContainer}>
             {/* Email Input */}
-            <View style={authStyles.inputContainer}>
-              <TextInput
-                style={authStyles.textInput}
-                placeholder="Enter email"
-                placeholderTextColor={COLORS.textLight}
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-              />
-            </View>
+            <AuthInput
+              Placeholder="Enter email"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+            />
+            
+            {/* PASSWORD INPUT */}
+            <AuthInput 
+              Placeholder="Enter password"
+              value={password}
+              onChangeText={setPassword}
+              secure
+            />
 
-            {/* Password Input */}
-            <View style={authStyles.inputContainer}>
-              <TextInput
-                style={authStyles.textInput}
-                placeholder="Enter password"
-                placeholderTextColor={COLORS.textLight}
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry={!showPassword}
-                autoCapitalize="none"
-              />
-              <TouchableOpacity
-                style={authStyles.eyeButton}
-                onPress={() => setShowPassword(!showPassword)}
-              >
-                <Ionicons
-                  name={showPassword ? "eye-outline" : "eye-off-outline"}
-                  size={20}
-                  color={COLORS.textLight}
-                />
-              </TouchableOpacity>
-            </View>
-
-            {/* Sign Up Button */}
-            <TouchableOpacity
-              style={[authStyles.authButton, loading && authStyles.buttonDisabled]}
+            {/* SIGN IN BUTTON*/}
+            <AuthButton
               onPress={handleSignUp}
-              disabled={loading}
-              activeOpacity={0.8}
-            >
-              <Text style={authStyles.buttonText}>
-                {loading ? "Creating Account..." : "Sign Up"}
-              </Text>
-            </TouchableOpacity>
+              loading={loading}
+              title1={"Signing Up"}
+              title2={"Sign Up"}
+            />
 
             {/* Sign In Link */}
             <TouchableOpacity style={authStyles.linkContainer} onPress={() => router.back()}>

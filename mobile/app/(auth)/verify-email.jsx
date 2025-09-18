@@ -6,6 +6,9 @@ import { COLORS } from "../../constants/colors";
 
 import { Image } from "expo-image";
 
+import AuthInput from '../../components/AuthInput'
+import AuthButton from '../../components/AuthButton'
+
 const VerifyEmail = ({ email, onBack }) => {
   const { isLoaded, signUp, setActive } = useSignUp();
   const [code, setCode] = useState('');
@@ -58,27 +61,20 @@ const VerifyEmail = ({ email, onBack }) => {
 
           <View style={authStyles.formContainer}>
             {/* Verification Code Input */}
-            <View style={authStyles.inputContainer}>
-              <TextInput
-                style={authStyles.textInput}
-                placeholder="Enter verification code"
-                placeholderTextColor={COLORS.textLight}
-                value={code}
-                onChangeText={setCode}
-                keyboardType="number-pad"
-                autoCapitalize="none"
-              />
-            </View>
+            <AuthInput
+              Placeholder="Enter verification code"
+              value={code}
+              onChangeText={setCode}
+              keyboardType="number-pad"
+            />
 
             {/* Verify Button */}
-            <TouchableOpacity
-              style={[authStyles.authButton, loading && authStyles.buttonDisabled]}
+            <AuthButton
               onPress={handleVerification}
-              disabled={loading}
-              activeOpacity={0.8}
-            >
-              <Text style={authStyles.buttonText}>{loading ? "Verifying..." : "Verify Email"}</Text>
-            </TouchableOpacity>
+              loading={loading}
+              title1={"Verifying..."}
+              title2={"Verify Email"}
+            />
 
             {/* Back to Sign Up */}
             <TouchableOpacity style={authStyles.linkContainer} onPress={onBack}>
