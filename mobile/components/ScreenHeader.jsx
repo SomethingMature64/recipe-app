@@ -18,11 +18,10 @@ export default function ScreenHeader({title,hidelogout=false})
     return (
         <View style={favoritesStyles.header}>
             <Text style = {favoritesStyles.title}>{title}</Text>
-            
-            ({ hidelogout &&
+            ({hidelogout &&
                 <TouchableOpacity style={favoritesStyles.logoutButton} onPress={handleSignOut}>
-                <Ionicons name="log-out-outline" size={22} color={COLORS.text} />
-            </TouchableOpacity>
+                    <Ionicons name="log-out-outline" size={22} color={COLORS.text} />
+                </TouchableOpacity>
             })
         </View>
     );

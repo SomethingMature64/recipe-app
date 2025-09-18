@@ -6,7 +6,6 @@ import LoadingSpinner from '../../components/LoadingSpinner'
 import NoFavoritesFound from "../../components/NoFavoritesFound";
 import {useFavorites} from '../../hooks/useFavorites'
 import ScreenHeader from '../../components/ScreenHeader'
-import ScreenHeader from '../../components/ScreenHeader'
 
 const FavoriteScreen = () => {
     const {user} = useUser();
